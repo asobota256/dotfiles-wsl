@@ -26,3 +26,27 @@ if [[ ${EUID} -eq 0 ]]; then
 else
   PS1='\[\e[1;34m\]\$\[\e[0m\] '
 fi
+
+# UNIX: file system
+alias cp='cp --interactive --verbose'
+alias mv='mv --interactive --verbose'
+alias rm='rm --interactive --verbose'
+
+alias mkdir='mkdir --parents --verbose'
+alias rmdir='rmdir --verbose'
+
+alias chmod='chmod --verbose'
+alias chown='chown --verbose'
+alias chgrp='chgrp --verbose'
+
+alias cmp='cmp --print-bytes'
+alias split='split --verbose'
+
+alias du='du --human-readable --summarize'
+alias df='df --human-readable --print-type'
+
+alias ls='ls --color=auto --group-directories-first --human-readable'
+
+# alias fuser='fuser --verbose'
+# alias ln='ln'
+# alias pax='pax'
