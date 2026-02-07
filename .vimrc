@@ -180,6 +180,16 @@ autocmd FileType python
 	\ setlocal softtabstop=4 |
 	\ setlocal smarttab
 
+" Shell: max 80 characters per line, indent with 2 spaces
+" https://google.github.io/styleguide/shellguide.html
+autocmd FileType sh
+	\ setlocal textwidth=80 |
+	\ setlocal expandtab |
+	\ setlocal tabstop=2 |
+	\ setlocal shiftwidth=2 |
+	\ setlocal softtabstop=2 |
+	\ setlocal smarttab
+
 " SystemVerilog: max 100 characters per line, indent with 2 spaces
 " https://www.systemverilog.io/styleguide
 " https://github.com/lowRISC/style-guides/blob/master/VerilogCodingStyle.md
