@@ -6,7 +6,7 @@ set nocompatible
 " Set internal character encoding to UTF-8
 set encoding=utf-8
 
-" Set how many lines of history VIM remembers
+" Set how many lines of history vim remembers
 set history=100
 
 " Do not create the ~/.viminfo file
@@ -132,20 +132,20 @@ set backspace=eol,start,indent
 
 """"""""""""""""""""""""""""""""""""" MISC """""""""""""""""""""""""""""""""""""
 
-" Automatically delete all trailing whitespace on save.
+" Automatically delete all trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+" Clear search highlighting when the <ESC> key is pressed
+nnoremap <silent> <ESC> :nohlsearch<CR><ESC>
 
 """""""""""""""""""""""""" FILE TYPE SPECIFIC OPTIONS """"""""""""""""""""""""""
 
 " textwidth	maximum number of characters per line
-" expandtab	insert spaces when the Tab key is pressed
-" tabstop	Tab character width (in columns)
+" expandtab	insert spaces when the <TAB> key is pressed
+" tabstop	tab (^I) character width (in columns)
 " shiftwidth	how many columns text is indented with the indent operation
-" softtabstop	sets how many columns hitting the Tab key indents:
-"		- if softtabstop is less then tabsop and expandtab is not set
+" softtabstop	sets how many columns hitting the <TAB> key indents:
+"		- if softtabstop is less then tabstop and expandtab is not set
 "		  vim will use a combination of tabs and spaces
 "		- if sotfttab equals tabstop end expandtab is not set vim will
 "		  always use tabs
