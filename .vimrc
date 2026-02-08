@@ -130,5 +130,5 @@ set backspace=eol,start,indent
 " Automatically delete all trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Clear search highlighting when the <ESC> key is pressed
-nnoremap <silent> <ESC> :nohlsearch<CR><ESC>
+" Clear search highlighting when the escape key is pressed
+nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
