@@ -7,7 +7,7 @@ setlocal textwidth=79
 
 " Use spaces for indentation
 setlocal expandtab
-" Indentation step is 4 spaces
+" Indentation step is 4 columns
 setlocal shiftwidth=4
 " Tab key inserts 4 spaces
 setlocal softtabstop=4
