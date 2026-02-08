@@ -84,11 +84,6 @@ set ruler
 " Enable syntax highlighting
 syntax on
 
-" Set the colorscheme
-colorscheme default
-" Set the background color
-set background=dark
-
 """"""""""""""""""""""""""" FILES, BACKUPS AND UNDO """"""""""""""""""""""""""""
 
 " Turn backup off
