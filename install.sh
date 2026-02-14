@@ -1,37 +1,26 @@
 #!/bin/sh
 
+FILES=".bashrc
+       .bash_profile
+       .gitconfig
+       .vimrc"
+
+DIRS=".vim/after/ftplugin
+      .vim/after/syntax"
+
 REPO=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 
-# bash
-ln --symbolic --force --verbose \
-  "${REPO}/.bashrc" \
-  "${HOME}/.bashrc"
-ln --symbolic --force --verbose \
-  "${REPO}/.bash_profile" \
-  "${HOME}/.bash_profile"
-
-# git
-ln --symbolic --force --verbose \
-  "${REPO}/.gitconfig" \
-  "${HOME}/.gitconfig"
-
-# vim
-ln --symbolic --force --verbose \
-  "${REPO}/.vimrc" \
-  "${HOME}/.vimrc"
-
-FTPLUGIN=".vim/after/ftplugin"
-mkdir --parents --verbose "${HOME}/${FTPLUGIN}"
-for file in "${REPO}/${FTPLUGIN}/"*; do
+for file in ${FILES}; do
   ln --symbolic --force --verbose \
-    "${file}" \
-    "${HOME}/${FTPLUGIN}/$(basename -- "${file}")"
+    "${REPO}/${file}" \
+    "${HOME}/${file}"
 done
 
-SYNTAX=".vim/after/syntax"
-mkdir --parents --verbose "${HOME}/${SYNTAX}"
-for file in "${REPO}/${SYNTAX}/"*; do
-  ln --symbolic --force --verbose \
-    "${file}" \
-    "${HOME}/${SYNTAX}/$(basename -- "${file}")"
+for dir in ${DIRS}; do
+  mkdir --parents --verbose "${HOME}/${dir}"
+  for file in "${REPO}/${dir}/"*; do
+    ln --symbolic --force --verbose \
+      "${file}" \
+      "${HOME}/${dir}/$(basename -- "${file}")"
+  done
 done
