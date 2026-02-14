@@ -17,7 +17,7 @@ for file in ${FILES}; do
 done
 
 for dir in ${DIRS}; do
-  mkdir --parents --verbose "${HOME}/${dir}"
+  mkdir --parents "${HOME}/${dir}"
   for file in "${REPO}/${dir}/"*; do
     ln --symbolic --force --verbose \
       "${file}" \
