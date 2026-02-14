@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REPO=$(pwd)
+REPO=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 
 # bash
 ln --symbolic --force --verbose \
@@ -20,18 +20,18 @@ ln --symbolic --force --verbose \
   "${REPO}/.vimrc" \
   "${HOME}/.vimrc"
 
-FTPLUGIN="/.vim/after/ftplugin/"
-mkdir --parents --verbose "${HOME}${FTPLUGIN}"
-for file in "${REPO}${FTPLUGIN}"*; do
+FTPLUGIN=".vim/after/ftplugin"
+mkdir --parents --verbose "${HOME}/${FTPLUGIN}"
+for file in "${REPO}/${FTPLUGIN}/"*; do
   ln --symbolic --force --verbose \
     "${file}" \
-    "${HOME}${FTPLUGIN}$(basename -- "${file}")"
+    "${HOME}/${FTPLUGIN}/$(basename -- "${file}")"
 done
 
-SYNTAX="/.vim/after/syntax/"
-mkdir --parents --verbose "${HOME}${SYNTAX}"
-for file in "${REPO}${SYNTAX}"*; do
+SYNTAX=".vim/after/syntax"
+mkdir --parents --verbose "${HOME}/${SYNTAX}"
+for file in "${REPO}/${SYNTAX}/"*; do
   ln --symbolic --force --verbose \
     "${file}" \
-    "${HOME}${SYNTAX}$(basename -- "${file}")"
+    "${HOME}/${SYNTAX}/$(basename -- "${file}")"
 done
