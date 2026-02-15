@@ -10,17 +10,20 @@ DIRS=".vim/after/ftplugin
 
 REPO=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 
+link() {
+  file=$1
+  ln --symbolic --force --verbose "${REPO}/${file}" "${HOME}/${file}"
+}
+
 for file in ${FILES}; do
-  ln --symbolic --force --verbose \
-    "${REPO}/${file}" \
-    "${HOME}/${file}"
+  link "${file}"
 done
 
 for dir in ${DIRS}; do
   mkdir --parents "${HOME}/${dir}"
+  #ln --symbolic --force --verbose "${REPO}/${dir}/"* "${HOME}/${dir}/"
   for file in "${REPO}/${dir}/"*; do
-    ln --symbolic --force --verbose \
-      "${file}" \
-      "${HOME}/${dir}/$(basename -- "${file}")"
+    name=$(basename -- "${file}")
+    link "${dir}/${name}"
   done
 done
