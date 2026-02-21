@@ -3,7 +3,7 @@
 " Disable vi-compatibility mode
 set nocompatible
 
-" Set internal character encoding to UTF-8
+" Set internal character encoding to utf-8
 set encoding=utf-8
 
 " Enable file type detection
@@ -23,12 +23,12 @@ set ttyfast
 " Enable syntax highlighting
 syntax on
 
-" Display line numbers relative to the cursor and the actual line number
+" Show line numbers relative to the cursor and the actual line number
 " of the current line
 set number
 set relativenumber
 
-" Show at least one line above and below the current cursor
+" Show at least one line above and below the cursor
 set scrolloff=1
 
 " Wrap lines longer than the window width
@@ -41,20 +41,20 @@ set breakindent
 " Hide the status line
 set laststatus=0
 
-""""""" COMMAND LINE """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""" COMMAND BAR """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Show the command bar
 set showcmd
-" Set the height of the command bar
+" Set the height of the command bar to one line
 set cmdheight=1
 
-" Show current mode
+" Show the current mode
 set showmode
 
-" Show the cursor position at all times
+" Show the cursor position
 set ruler
 
-" Turn on command line completion
+" Show possible matches when using command-line completion
 set wildmenu
 
 """"""" MESSAGES """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -66,30 +66,31 @@ set shortmess-=l
 set shortmess-=n
 set shortmess-=x
 
-" Don't display the vim intro message
+" Don't display the intro message when starting vim
 set shortmess+=I
 
 """"""" HISTORY AND BACKUP """""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set how many lines of history vim remembers
+" Set how many lines of history to remember
 set history=100
 
-" Do not create the ~/.viminfo file
-set viminfofile=NONE
+" Don't store any information in the ~/.viminfo file
+set viminfo=
 
-" Turn backup off
+" Make a backup before overwriting a file, but remove it after the file has
+" been successfully written
+set writebackup
 set nobackup
-set noswapfile
 
 """"""" EDITING """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Let backspace delete EoL, automatic indentation and past start of insert
-set backspace=eol,start,indent
+" Allow backspacing over autoindent, line breaks and the start of insert
+set backspace=indent,eol,start
 
-" Insert one space after '.', '?' and '!' with a join command instead of two
+" Insert one space (instead of two) after '.', '?' and '!' with a join command
 set nojoinspaces
 
-" Automatically delete all trailing whitespace on save
+" Automatically delete all trailing whitespace when saving a file
 autocmd BufWritePre * :%s/\s\+$//e
 
 """"""" SEARCHING """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -97,18 +98,17 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Turn on regular expressions
 set magic
 
-" Ignore case when searching
+" Ignore case in search patterns unless it contains uppercase characters
 set ignorecase
-" Override ignorecase if the search pattern contains uppercase characters
 set smartcase
 
-" Search for the string while it is being typed
+" Search for the pattern while it is being typed
 set incsearch
 
-" When search reaches end of file, wrap around to the beginning
+" Searches wrap around the end of the file
 set wrapscan
 
-" Highlight search results
+" Highlight matches of the search pattern
 set hlsearch
 
 """"""" KEYMAPS """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
