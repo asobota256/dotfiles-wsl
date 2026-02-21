@@ -1,16 +1,10 @@
-""""""""""""""""""""""""""""""""""" GENERAL """"""""""""""""""""""""""""""""""""
+""""""" GENERAL """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Disable vi compatibility
+" Disable vi-compatibility mode
 set nocompatible
 
 " Set internal character encoding to UTF-8
 set encoding=utf-8
-
-" Set how many lines of history vim remembers
-set history=100
-
-" Do not create the ~/.viminfo file
-set viminfofile=NONE
 
 " Enable file type detection
 filetype on
@@ -19,41 +13,35 @@ filetype plugin on
 " Use file type specific indentation
 filetype indent on
 
-""""""""""""""""""""""""""" USER INTERFACE BEHAVIOR """"""""""""""""""""""""""""
-
 " Don't redraw the screen while executing macros
 set lazyredraw
 " Indicate a fast terminal connection
 set ttyfast
 
-" Turn on command line completion
-set wildmenu
+""""""" WINDOW AND BUFFER """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Turn on regular expressions
-set magic
+" Enable syntax highlighting
+syntax on
 
-" Wrap lines
+" Display line numbers relative to the cursor and the actual line number
+" of the current line
+set number
+set relativenumber
+
+" Show at least one line above and below the current cursor
+set scrolloff=1
+
+" Wrap lines longer than the window width
 set wrap
 " Continue wrapped lines visually indented
 set breakindent
 
-" Disable error bells
-set belloff=all
-set noerrorbells
-set novisualbell
-set t_vb=
+""""""" STATUS LINE """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Disable shortening of file messages
-set shortmess-=f
-set shortmess-=i
-set shortmess-=l
-set shortmess-=n
-set shortmess-=x
+" Hide the status line
+set laststatus=0
 
-" Disable the vim intro message
-set shortmess+=I
-
-"""""""""""""""""""""""""" USER INTERFACE APPEARANCE """""""""""""""""""""""""""
+""""""" COMMAND LINE """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Show the command bar
 set showcmd
@@ -63,45 +51,51 @@ set cmdheight=1
 " Show current mode
 set showmode
 
-" TODO: Set the cursor appearance
-"set guicursor=n-v-c:block,o:hor50,i-ci:hor15,r-cr:hor30,sm:block
-
-" Display relative line numbers
-set number relativenumber
-
-""""""""""""""""""""""""""""""""" STATUS LINE """"""""""""""""""""""""""""""""""
-
-" Hide the status line
-set laststatus=0
-
 " Show the cursor position at all times
 set ruler
-" TODO: Format the ruler string content
-"set rulerformat=
 
-""""""""""""""""""""""""""""""" COLORS AND FONTS """""""""""""""""""""""""""""""
+" Turn on command line completion
+set wildmenu
 
-" Enable syntax highlighting
-syntax on
+""""""" MESSAGES """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""" FILES, BACKUPS AND UNDO """"""""""""""""""""""""""""
+" Don't shorten the file messages
+set shortmess-=f
+set shortmess-=i
+set shortmess-=l
+set shortmess-=n
+set shortmess-=x
+
+" Don't display the vim intro message
+set shortmess+=I
+
+""""""" HISTORY AND BACKUP """""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set how many lines of history vim remembers
+set history=100
+
+" Do not create the ~/.viminfo file
+set viminfofile=NONE
 
 " Turn backup off
 set nobackup
 set noswapfile
 
-""""""""""""""""""""""""""""" TEXT AND INDENTATION """""""""""""""""""""""""""""
+""""""" EDITING """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Disables automatic commenting on newline
-" Sets the text formatting options as 'formatoptions=cql'
-autocmd FileType *
-	\ set formatoptions-=r |
-	\ set formatoptions-=o
+" Let backspace delete EoL, automatic indentation and past start of insert
+set backspace=eol,start,indent
 
-" Insert one space after . ? and ! with a join command
+" Insert one space after '.', '?' and '!' with a join command instead of two
 set nojoinspaces
 
-"""""""""""""""""""""""""""""""""" SEARCHING """""""""""""""""""""""""""""""""""
+" Automatically delete all trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+""""""" SEARCHING """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Turn on regular expressions
+set magic
 
 " Ignore case when searching
 set ignorecase
@@ -117,18 +111,7 @@ set wrapscan
 " Highlight search results
 set hlsearch
 
-""""""""""""""""""" MOVING AROUND, TABS, WINDOWS AND BUFFERS """""""""""""""""""
-
-" Show at least 1 line above and below the current cursor position
-set scrolloff=1
-
-" Let backspace delete EoL, automatic indentation and past start of insert
-set backspace=eol,start,indent
-
-""""""""""""""""""""""""""""""""""""" MISC """""""""""""""""""""""""""""""""""""
-
-" Automatically delete all trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+""""""" KEYMAPS """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Clear search highlighting when the escape key is pressed
 nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
